@@ -31,6 +31,7 @@ jobs:
         npm install
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:lolin_s2_mini' >>platformio.ini
+        echo 'build_flags = ${env:lolin_s2_mini.build_flags} -D WLED_DISABLE_MQTT -D WLED_DISABLE_LOXONE -D WLED_DISABLE_WEBSOCKETS -D WLED_DISABLE_HUESYNC -D WLED_DISABLE_2D -D USERMOD_AUTO_SAVE' >>platformio.ini
         
         echo 'build_unflags= -D WLED_RELEASE_NAME' >>platformio.ini
         pio run -e custom_build || pio run -e custom_build
